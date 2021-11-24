@@ -113,14 +113,14 @@ echo "neofetch" >> .profile
 
 
 # install webserver
-apt -y install nginx
-cd
-rm /etc/nginx/sites-enabled/default
-rm /etc/nginx/sites-available/default
-wget -O /etc/nginx/nginx.conf "https://raw.githubusercontent.com/bokir-tampan/ranjau-darat/main/nginx.conf"
-mkdir -p /home/vps/public_html
-wget -O /etc/nginx/conf.d/vps.conf "https://raw.githubusercontent.com/bokir-tampan/ranjau-darat/main/vps.conf"
-/etc/init.d/nginx restart
+#apt -y install nginx
+#cd
+#rm /etc/nginx/sites-enabled/default
+#rm /etc/nginx/sites-available/default
+#wget -O /etc/nginx/nginx.conf "https://raw.githubusercontent.com/bokir-tampan/ranjau-darat/main/nginx.conf"
+#mkdir -p /home/vps/public_html
+#wget -O /etc/nginx/conf.d/vps.conf "https://raw.githubusercontent.com/bokir-tampan/ranjau-darat/main/vps.conf"
+#/etc/init.d/nginx restart
 
 # install badvpn
 cd
@@ -222,15 +222,6 @@ wget -O /etc/default/sslh "https://raw.githubusercontent.com/bokir-tampan/ranjau
 service sslh restart
 
 
-#install badvpncdn
-wget https://github.com/ambrop72/badvpn/archive/master.zip
-unzip master.zip
-cd badvpn-master
-mkdir build
-cmake .. -DBUILD_NOTHING_BY_DEFAULT=1 -DBUILD_UDPGW=1
-sudo make install
-
-END
 #OpenVPN
 wget https://raw.githubusercontent.com/bokir-tampan/ranjau-darat/main/vpn.sh &&  chmod +x vpn.sh && ./vpn.sh
 
