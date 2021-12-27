@@ -312,7 +312,7 @@ wget -O autokill "https://raw.githubusercontent.com/bokir-tampan/ranjau-darat/ma
 wget -O ceklim "https://raw.githubusercontent.com/bokir-tampan/ranjau-darat/main/ceklim.sh"
 wget -O tendang "https://raw.githubusercontent.com/bokir-tampan/ranjau-darat/main/tendang.sh"
 wget -O clear-log "https://raw.githubusercontent.com/bokir-tampan/ranjau-darat/main/clear-log.sh"
-wget -O change-port "https://raw.githubusercontent.com/bokir-tampan/ranjau-darat/main/change.sh"
+wget -O change-port "https://raw.githubusercontent.com/bokir-tampan/ranjau-darate/main/change.sh"
 wget -O port-ovpn "https://raw.githubusercontent.com/bokir-tampan/ranjau-darat/main/port-ovpn.sh"
 wget -O port-ssl "https://raw.githubusercontent.com/bokir-tampan/ranjau-darat/main/port-ssl.sh"
 wget -O port-wg "https://raw.githubusercontent.com/bokir-tampan/ranjau-darat/main/port-wg.sh"
@@ -349,6 +349,8 @@ wget -O xp-trgo "https://raw.githubusercontent.com/bokir-tampan/ranjau-darate/ma
 wget -O point "https://raw.githubusercontent.com/bokir-tampan/ranjau-darat/main/pointing.sh"
 wget -O service-status "https://raw.githubusercontent.com/bokir-tampan/ranjau-darate/main/service.sh"
 wget -O bcknginx "https://github.com/bokir-tampan/ranjau-darate/raw/main/backup-nginx.sh"
+wget -O log-ws "https://github.com/bokir-tampan/ranjau-darate/raw/main/log-ws.sh"
+wget -O port-sslh "https://github.com/bokir-tampan/ranjau-darate/raw/main/port-sslh.sh"
 chmod +x add-host
 chmod +x usernew
 chmod +x trial
@@ -406,6 +408,8 @@ chmod +x xp-trgo
 chmod +x point
 chmod +x service-status
 chmod +x bcknginx
+chmod +x port-sslh
+chmod +x log-ws
 echo "0 5 * * * root clear-log && reboot" >> /etc/crontab
 echo "0 0 * * * root xp" >> /etc/crontab
 # remove unnecessary files
