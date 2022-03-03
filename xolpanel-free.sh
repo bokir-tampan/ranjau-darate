@@ -11,9 +11,9 @@ pip3 install pillow
 #isi data
 echo ""
 read -e -p "[*] Input your Bot Token : " bottoken
-read -e -p "[*] Input your Your Id Telegram :" admin
-read -e -p "[*] Input your Your Domain :" domain
-echo -e BOT_TOKEN='"'$bottoken'"' > /root/xolpanel/var.txt
+read -e -p "[*] Input Your Id Telegram :" admin
+read -e -p "[*] Input Your Domain :" domain
+echo -e BOT_TOKEN='"'$bottoken'"' >> /root/xolpanel/var.txt
 echo -e ADMIN='"'$admin'"' >> /root/xolpanel/var.txt
 echo -e DOMAIN='"'$domain'"' >> /root/xolpanel/var.txt
 clear
@@ -24,7 +24,7 @@ echo "DOMAIN         : $bottoken"
 echo "Email          : $admin"
 echo "Api Key        : $domain"
 echo -e "==============================="
-echo "Setting done ✓ now open this menu again"
+echo "Setting done"
 
 cat > /etc/systemd/system/xolpanel.service << END
 [Unit]
