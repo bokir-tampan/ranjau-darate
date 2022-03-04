@@ -80,6 +80,8 @@ wget -O renew-vless "https://raw.githubusercontent.com/bokir-tampan/ranjau-darat
 wget -O renew-tr "https://raw.githubusercontent.com/bokir-tampan/ranjau-darat/main/renew-tr.sh"
 wget -O certv2ray "https://raw.githubusercontent.com/bokir-tampan/ranjau-darat/main/cert.sh"
 wget -O menu-trojanws "https://raw.githubusercontent.com/bokir-tampan/ranjau-darat/main/update/menu-trojanws.sh"
+wget -O bckp "https://raw.githubusercontent.com/bokir-tampan/ranjau-darat/main/bckp.sh"
+wget -O backup "https://raw.githubusercontent.com/bokir-tampan/ranjau-darat/main/backup.sh"
 chmod +x add-ws
 chmod +x menu-trojanws
 chmod +x add-vless
@@ -158,6 +160,8 @@ chmod +x renew-sstp
 chmod +x renew-wg
 chmod +x renew-ss
 chmod +x renew-ssr
+chmod +x bckp
+chmod +x backup
 
 
 cd 
