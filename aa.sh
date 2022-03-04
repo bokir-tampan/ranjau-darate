@@ -43,6 +43,30 @@ wget -O vleess "https://raw.githubusercontent.com/bokir-tampan/ranjau-darat/main
 wget -O bbr "https://raw.githubusercontent.com/bokir-tampan/ranjau-darat/main/update/bbr.sh"
 wget -O autoreboot "https://raw.githubusercontent.com/bokir-tampan/ranjau-darat/main/autoreboot.sh"
 wget -O port-sslh "https://github.com/bokir-tampan/ranjau-darate/raw/main/port-sslh.sh"
+wget -O add-l2tp "https://raw.githubusercontent.com/bokir-tampan/ranjau-darat/main/add-l2tp.sh"
+wget -O add-sstp "https://raw.githubusercontent.com/bokir-tampan/ranjau-darat/main/add-sstp.sh"
+wget -O add-ss "https://raw.githubusercontent.com/bokir-tampan/ranjau-darat/main/add-ss.sh"
+wget -O add-ssr "https://raw.githubusercontent.com/bokir-tampan/ranjau-darat/main/add-ssr.sh"
+wget -O add-wg "https://raw.githubusercontent.com/bokir-tampan/ranjau-darat/main/add-wg.sh"
+wget -O cek-l2tp "https://raw.githubusercontent.com/bokir-tampan/ranjau-darat/main/cek-l2tp.sh"
+wget -O cek-pptp "https://raw.githubusercontent.com/bokir-tampan/ranjau-darat/main/cek-pptp.sh"
+wget -O cek-sstp "https://raw.githubusercontent.com/bokir-tampan/ranjau-darat/main/cek-sstp.sh"
+wget -O cek-ss "https://raw.githubusercontent.com/bokir-tampan/ranjau-darat/main/cek-ss.sh"
+wget -O cek-ssr "https://raw.githubusercontent.com/bokir-tampan/ranjau-darat/main/cek-ssr.sh"
+wget -O cek-wg "https://raw.githubusercontent.com/bokir-tampan/ranjau-darat/main/cek-wg.sh"
+wget -O renew-l2tp "https://raw.githubusercontent.com/bokir-tampan/ranjau-darat/main/renew-l2tp.sh"
+wget -O renew-pptp "https://raw.githubusercontent.com/bokir-tampan/ranjau-darat/main/renew-pptp.sh
+wget -O renew-ss "https://raw.githubusercontent.com/bokir-tampan/ranjau-darat/main/renew-ss.sh""
+wget -O renew-sstp "https://raw.githubusercontent.com/bokir-tampan/ranjau-darat/main/renew-sstp.sh"
+wget -O renew-ssr "https://raw.githubusercontent.com/bokir-tampan/ranjau-darat/main/renew-ssr.sh"
+wget -O renew-wg "https://raw.githubusercontent.com/bokir-tampan/ranjau-darat/main/renew-wg.sh"
+wget -O del-l2tp "https://raw.githubusercontent.com/bokir-tampan/ranjau-darat/main/del-l2tp.sh"
+wget -O del-pptp "https://raw.githubusercontent.com/bokir-tampan/ranjau-darat/main/del-pptp.sh"
+wget -O del-sstp "https://raw.githubusercontent.com/bokir-tampan/ranjau-darat/main/del-sstp.sh"
+wget -O del-ss "https://raw.githubusercontent.com/bokir-tampan/ranjau-darat/main/del-ss.sh"
+wget -O del-ssr "https://raw.githubusercontent.com/bokir-tampan/ranjau-darat/main/del-ssr.sh"
+wget -O del-wg "https://raw.githubusercontent.com/bokir-tampan/ranjau-darat/main/del-wg.sh"
+
 chmod +x add-host
 chmod +x usernew
 chmod +x trial
@@ -83,6 +107,31 @@ chmod +x wgr
 chmod +x vleess
 chmod +x bbr
 chmod +x port-sslh
+chmod +x add-l2tp
+chmod +x add-pptp
+chmod +x add-sstp
+chmod +x add-ss
+chmod +x add-ssr
+chmod +x add-wg
+chmod +x del-l2tp
+chmod +x del-sstp
+chmod +x del-pptp
+chmod +x del-wg
+chmod +x del-ss
+chmod +x del-ssr
+chmod +x cek-l2tp
+chmod +x cek-pptp
+chmod +x cek-sstp
+chmod +x cek-wg
+chmod +x cek-ss
+chmod +x cek-ssr
+chmod +x renew-l2tp
+chmod +x renew-pptp
+chmod +x renew-sstp
+chmod +x renew-wg
+chmod +x renew-ss
+chmod +x renew-ssr
+
 
 cd 
 reboot
