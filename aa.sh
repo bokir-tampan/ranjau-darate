@@ -56,7 +56,7 @@ wget -O cek-ssr "https://raw.githubusercontent.com/bokir-tampan/ranjau-darat/mai
 wget -O cek-wg "https://raw.githubusercontent.com/bokir-tampan/ranjau-darat/main/cek-wg.sh"
 wget -O renew-l2tp "https://raw.githubusercontent.com/bokir-tampan/ranjau-darat/main/renew-l2tp.sh"
 wget -O renew-pptp "https://raw.githubusercontent.com/bokir-tampan/ranjau-darat/main/renew-pptp.sh
-wget -O renew-ss "https://raw.githubusercontent.com/bokir-tampan/ranjau-darat/main/renew-ss.sh""
+wget -O renew-ss "https://raw.githubusercontent.com/bokir-tampan/ranjau-darat/main/renew-ss.sh"
 wget -O renew-sstp "https://raw.githubusercontent.com/bokir-tampan/ranjau-darat/main/renew-sstp.sh"
 wget -O renew-ssr "https://raw.githubusercontent.com/bokir-tampan/ranjau-darat/main/renew-ssr.sh"
 wget -O renew-wg "https://raw.githubusercontent.com/bokir-tampan/ranjau-darat/main/renew-wg.sh"
