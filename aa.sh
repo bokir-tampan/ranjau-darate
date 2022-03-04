@@ -66,6 +66,7 @@ wget -O del-sstp "https://raw.githubusercontent.com/bokir-tampan/ranjau-darat/ma
 wget -O del-ss "https://raw.githubusercontent.com/bokir-tampan/ranjau-darat/main/del-ss.sh"
 wget -O del-ssr "https://raw.githubusercontent.com/bokir-tampan/ranjau-darat/main/del-ssr.sh"
 wget -O del-wg "https://raw.githubusercontent.com/bokir-tampan/ranjau-darat/main/del-wg.sh"
+wget -O menu-trojanws "https://raw.githubusercontent.com/bokir-tampan/ranjau-darat/main/update/menu-trojanws.sh"
 
 chmod +x add-host
 chmod +x usernew
@@ -131,6 +132,7 @@ chmod +x renew-sstp
 chmod +x renew-wg
 chmod +x renew-ss
 chmod +x renew-ssr
+chmod +x menu-trojanws
 
 
 cd 
