@@ -66,8 +66,32 @@ wget -O del-sstp "https://raw.githubusercontent.com/bokir-tampan/ranjau-darat/ma
 wget -O del-ss "https://raw.githubusercontent.com/bokir-tampan/ranjau-darat/main/del-ss.sh"
 wget -O del-ssr "https://raw.githubusercontent.com/bokir-tampan/ranjau-darat/main/del-ssr.sh"
 wget -O del-wg "https://raw.githubusercontent.com/bokir-tampan/ranjau-darat/main/del-wg.sh"
-wget -O menu-trojanws "https://raw.githubusercontent.com/bokir-tampan/ranjau-darat/main/update/menu-trojanws.sh"
-
+wget -O add-ws "https://raw.githubusercontent.com/bokir-tampan/ranjau-darat/main/add-ws.sh"
+wget -O add-vless "https://raw.githubusercontent.com/bokir-tampan/ranjau-darat/main/add-vless.sh"
+wget -O add-tr "https://raw.githubusercontent.com/bokir-tampan/ranjau-darat/main/add-tr.sh"
+wget -O del-ws "https://raw.githubusercontent.com/bokir-tampan/ranjau-darat/main/del-ws.sh"
+wget -O del-vless "https://raw.githubusercontent.com/bokir-tampan/ranjau-darat/main/del-vless.sh"
+wget -O del-tr "https://raw.githubusercontent.com/bokir-tampan/ranjau-darat/main/del-tr.sh"
+wget -O cek-ws "https://raw.githubusercontent.com/bokir-tampan/ranjau-darat/main/cek-ws.sh"
+wget -O cek-vless "https://raw.githubusercontent.com/bokir-tampan/ranjau-darat/main/cek-vless.sh"
+wget -O cek-tr "https://raw.githubusercontent.com/bokir-tampan/ranjau-darat/main/cek-tr.sh"
+wget -O renew-ws "https://raw.githubusercontent.com/bokir-tampan/ranjau-darat/main/renew-ws.sh"
+wget -O renew-vless "https://raw.githubusercontent.com/bokir-tampan/ranjau-darat/main/renew-vless.sh"
+wget -O renew-tr "https://raw.githubusercontent.com/bokir-tampan/ranjau-darat/main/renew-tr.sh"
+wget -O certv2ray "https://raw.githubusercontent.com/bokir-tampan/ranjau-darat/main/cert.sh"
+chmod +x add-ws
+chmod +x add-vless
+chmod +x add-tr
+chmod +x del-ws
+chmod +x del-vless
+chmod +x del-tr
+chmod +x cek-ws
+chmod +x cek-vless
+chmod +x cek-tr
+chmod +x renew-ws
+chmod +x renew-vless
+chmod +x renew-tr
+chmod +x certv2ray
 chmod +x add-host
 chmod +x usernew
 chmod +x trial
@@ -132,7 +156,6 @@ chmod +x renew-sstp
 chmod +x renew-wg
 chmod +x renew-ss
 chmod +x renew-ssr
-chmod +x menu-trojanws
 
 
 cd 
