@@ -1,100 +1,68 @@
 #!/bin/bash
-# Trojan Go Auto Setup 
-# =========================
+dateFromServer=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
+biji=`date +"%Y-%m-%d" -d "$dateFromServer"`
+#########################
 
-# Domain 
-domain=$(cat /etc/v2ray/domain)
-
-# Uuid Service
-uuid=$(cat /proc/sys/kernel/random/uuid)
-
-# Trojan Go Akun 
-mkdir -p /etc/trojan-go/
-touch /etc/trojan-go/akun.conf
-touch /etc/trojan-go/uuid.txt
-
-# Installing Trojan Go
-mkdir -p /etc/trojan-go/
-chmod 777 /etc/trojan-go/
-touch /etc/trojan-go/trojan-go.pid
-wget -O /etc/trojan-go/trojan-go https://github.com/bokir-tampan/ranjau-darate/raw/main/trojan-go
-chmod +x /etc/trojan-go/trojan-go
-cat <<EOF > /etc/trojan-go/config.json
-{
-    "run_type": "server",
-    "local_addr": "0.0.0.0",
-    "local_port": 2096,
-    "remote_addr": "127.0.0.1",
-    "remote_port": 81,
-    "log_level": 1,
-    "log_file": "",
-    "password": [
-        "$uuid"
-    ],
-  "disable_http_check": false,
-  "udp_timeout": 60,
-  "ssl": {
-    "verify": true,
-    "verify_hostname": true,
-    "cert": "/etc/v2ray/v2ray.crt",
-    "key": "/etc/v2ray/v2ray.key",
-    "key_password": "",
-    "cipher": "",
-    "curves": "",
-    "prefer_server_cipher": false,
-    "sni": "$domain",
-    "alpn": [
-      "http/1.1"
-    ],
-    "session_ticket": true,
-    "reuse_session": true,
-    "plain_http_response": "",
-    "fallback_addr": "127.0.0.1",
-    "fallback_port": 2096,
-    "fingerprint": ""
-  },
-  "tcp": {
-    "no_delay": true,
-    "keep_alive": true,
-    "prefer_ipv4": false
-  },
-  "websocket": {
-    "enabled": true,
-    "path": "/bokir_tampan",
-    "host": "$domain"
-  }
+BURIQ () {
+    curl -sS https://raw.githubusercontent.com/bokir-tampan/test/main/ip > /root/tmp
+    data=( `cat /root/tmp | grep -E "^### " | awk '{print $2}'` )
+    for user in "${data[@]}"
+    do
+    exp=( `grep -E "^### $user" "/root/tmp" | awk '{print $3}'` )
+    d1=(`date -d "$exp" +%s`)
+    d2=(`date -d "$biji" +%s`)
+    exp2=$(( (d1 - d2) / 86400 ))
+    if [[ "$exp2" -le "0" ]]; then
+    echo $user > /etc/.$user.ini
+    else
+    rm -f /etc/.$user.ini > /dev/null 2>&1
+    fi
+    done
+    rm -f /root/tmp
 }
-EOF
-cat <<EOF > /etc/systemd/system/trojan-go.service
-[Unit]
-Description=Trojan-Go  By BokirTampan
-Documentation=https://p4gefau1t.github.io/trojan-go/
-After=network.target nss-lookup.target
 
-[Service]
-User=root
-NoNewPrivileges=true
-ExecStart=/etc/trojan-go/trojan-go -config /etc/trojan-go/config.json
-Restart=on-failure
-RestartSec=10s
-LimitNOFILE=infinity
+MYIP=$(curl -sS ipv4.icanhazip.com)
+Name=$(curl -sS https://raw.githubusercontent.com/bokir-tampan/test/main/ip | grep $MYIP | awk '{print $2}')
+echo $Name > /usr/local/etc/.$Name.ini
+CekOne=$(cat /usr/local/etc/.$Name.ini)
 
-[Install]
-WantedBy=multi-user.target
+Bloman () {
+if [ -f "/etc/.$Name.ini" ]; then
+CekTwo=$(cat /etc/.$Name.ini)
+    if [ "$CekOne" = "$CekTwo" ]; then
+        res="Expired"
+    fi
+else
+res="Permission Accepted..."
+fi
+}
 
-EOF
+PERMISSION () {
+    MYIP=$(curl -sS ipv4.icanhazip.com)
+    IZIN=$(curl -sS https://raw.githubusercontent.com/bokir-tampan/test/main/ip | awk '{print $4}' | grep $MYIP)
+    if [ "$MYIP" = "$IZIN" ]; then
+    Bloman
+    else
+    res="Permission Denied!"
+    fi
+    BURIQ
+}
+green() { echo -e "\\033[32;1m${*}\\033[0m"; }
+red() { echo -e "\\033[31;1m${*}\\033[0m"; }
+PERMISSION
+if [ "$res" = "Permission Accepted..." ]; then
+echo -ne
+else
+red "Permission Denied!"
+exit 0
+fi
+_INSTALL(){
+	mkdir -p /usr/lib/trojan-go >/dev/null 2>&1
+	wget -q -N --no-check-certificate https://github.com/p4gefau1t/trojan-go/releases/download/$(curl -fsSL https://api.github.com/repos/p4gefau1t/trojan-go/releases | grep '"tag_name":' | head -n 1 | sed -E 's/.*"([^"]+)".*/\1/')/trojan-go-linux-amd64.zip 
+	unzip -o -d /usr/lib/trojan-go/ ./trojan-go-linux-amd64.zip >/dev/null 2>&1
+	mv /usr/lib/trojan-go/trojan-go /usr/local/bin/ >/dev/null 2>&1
+	chmod +x /usr/local/bin/trojan-go
+    rm -rf ./trojan-go-linux-amd64.zip >/dev/null 2>&1
+}
 
-cat <<EOF > /etc/trojan-go/uuid.txt
-$uuid
-EOF
-iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 2096 -j ACCEPT
-iptables -I INPUT -m state --state NEW -m udp -p udp --dport 2096 -j ACCEPT
-iptables-save >/etc/iptables.rules.v4
-netfilter-persistent save
-netfilter-persistent reload
-systemctl daemon-reload
-
-# Starting
-systemctl daemon-reload
-systemctl enable trojan-go.service
-systemctl start trojan-go.service
+_INSTALL
