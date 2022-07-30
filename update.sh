@@ -7,9 +7,6 @@ wget -q -O menu-bckp "https://raw.githubusercontent.com/jsjsjsjsjsjsjsjsjsjsjsjs
 wget -q -O menu-ss "https://raw.githubusercontent.com/jsjsjsjsjsjsjsjsjsjsjsjs/hayomauapa/main/menu-ss.sh"
 wget -q -O menu-trojan "https://raw.githubusercontent.com/jsjsjsjsjsjsjsjsjsjsjsjs/hayomauapa/main/menu-trojan.sh"
 wget -q -O menu-ssh "https://raw.githubusercontent.com/jsjsjsjsjsjsjsjsjsjsjsjs/hayomauapa/main/menu-ssh.sh"
-wget -q -O usernew "https://raw.githubusercontent.com/jsjsjsjsjsjsjsjsjsjsjsjs/hayomauapa/main/usernew.sh"
-wget -q -O menu "https://raw.githubusercontent.com/jsjsjsjsjsjsjsjsjsjsjsjs/hayomauapa/main/menu.sh"
-wget -q -O xp "https://raw.githubusercontent.com/jsjsjsjsjsjsjsjsjsjsjsjs/hayomauapa/main/xp.sh"
 chmod +x menu-vless
 chmod +x menu-vmess
 chmod +x menu-ss
