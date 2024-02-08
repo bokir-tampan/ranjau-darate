@@ -1,0 +1,137 @@
+import os,json
+from flask import *
+import subprocess, random, re,sys
+try:
+	import speedtest 
+except:
+	os.system("pip3 install speedtest-cli")
+std = subprocess.PIPE
+app = Flask(__name__)
+#auth = sys.argv[2]
+
+import math
+
+@app.route("/renew")
+def renew():
+	u = request.args.get("user")
+	p = request.args.get("password")
+	exp = request.args.get("exp")
+	try:
+		subprocess.check_output(f'userdel -f {u}', shell=True)
+	except Exception as e:
+		print(str(e))
+		return "error"
+	else:
+		subprocess.check_output(f'useradd -e `date -d "{exp} days" +"%Y-%m-%d"` -s /bin/false -M {u}', shell=True)
+		subprocess.check_output(f'usermod --password $(echo {p} | openssl passwd -1 -stdin) {u}', shell=True)
+		return "success"
+
+
+@app.route("/renws")
+def renws():
+	num = request.args.get("num")
+	exp = request.args.get("exp")
+	cmd = f'printf "%s\n" "3" "{num}" "{exp}"| m-vmess'
+	x = subprocess.check_output(cmd,shell=True).decode("utf-8")
+	return x
+	
+@app.route("/rentr")
+def rentr():
+	num = request.args.get("num")
+	exp = request.args.get("exp")
+	cmd = f'printf "%s\n" "3" "{num}" "{exp}"| m-trojan'
+	x = subprocess.check_output(cmd,shell=True).decode("utf-8")
+	return x
+
+@app.route("/cektr")
+def cektr():
+	x = subprocess.check_output("cat /etc/xray/config.json | grep '#tr' | cut -d ' ' -f 2 | nl",shell=True).decode("ascii")
+	return x
+
+@app.route("/cekvm")
+def cekvm():
+	x = subprocess.check_output("cat /etc/xray/config.json | grep '#vmg' | cut -d ' ' -f 2 | nl",shell=True).decode("ascii")
+	return x
+
+
+@app.route("/create-vmess")
+def create_vmess():
+	user = request.args.get("user")
+	exp = request.args.get("exp")
+	qu = request.args.get("quota")
+	lim = request.args.get("limitip")
+	cmd = f"printf '%s\n' '1' '{user}' '{exp}' '{lim}' '{qu}' | m-vmess"
+	try:
+		x = subprocess.check_output(cmd,shell=True).decode("utf-8")
+		a = [x.group() for x in re.finditer("vmess://(.*)",x)]
+	except:
+		return "error"
+	else:
+		return(a)
+
+@app.route("/trojan-create")
+def create_trojan():
+	user = request.args.get("user")
+	exp = request.args.get("exp")
+	qu = request.args.get("quota")
+	lim = request.args.get("limitip")
+	cmd = f"printf '%s\n' '{user}' '{exp}' '{lim}' '{qu}' | m-trojan"
+	try:
+		x = subprocess.check_output(cmd,shell=True).decode("utf-8")
+		a = [x.group() for x in re.finditer("trojan://(.*)",x)]
+	except:
+		return "error"
+	else:
+		return(a)
+		
+@app.route("/trial-vmess")
+def vmmss():
+	x = subprocess.check_output(f"printf '%s\n' '2' '60' | m-vmess",shell=True).decode("utf-8")
+	a = [x.group() for x in re.finditer("vmess://(.*)",x)]
+	return (a)
+	
+@app.route("/trial-trojan")
+def trltjw():
+	x = subprocess.check_output(f"printf '%s\n' '2' '60' | m-trojan",shell=True).decode("utf-8")
+	a = [x.group() for x in re.finditer("trojan://(.*)",x)]
+	return (a)
+
+@app.route("/adduser/exp")
+def add_user_exp():
+	u = request.args.get("user")
+	p = request.args.get("password")
+	exp = request.args.get("exp")
+	lim = request.args.get("limitip")
+	try:
+		subprocess.check_output(f'useradd -e `date -d "{exp} days" +"%Y-%m-%d"` -s /bin/false -M {u}', shell=True)
+		subprocess.check_output(f'usermod --password $(echo {p} | openssl passwd -1 -stdin) {u}', shell=True)
+		subprocess.check_output(f'echo "### {u} `date -d "{exp} days" +"%Y-%m-%d"` {p} " >> /etc/xray/ssh' , shell=True)
+	except:
+		return "error"
+	else:	
+		return "success"
+
+@app.route("/trial-ssh")
+def trial_ssh():
+#	user = "trialX"+str(random.randint(10,1000))
+#	pw = "1"
+	exp = "60"
+	x = subprocess.Popen(["m-sshovpn"], stdin=subprocess.PIPE,
+	stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=False)
+	out, _ = x.communicate(bytes(f"2\n{exp}\nx\nx", "utf-8"))
+	out = out.decode("utf-8")
+	a = [x.group() for x in re.finditer("Username(.*)",out)]
+	return (a)
+	
+#@app.route("/trial-vmess")
+#def vmmss():
+#		x = subprocess.Popen(["mn"], stdin=subprocess.PIPE,
+#		stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=False)
+#		out, _ = x.communicate(bytes(f"2\n60\n\n", "utf-8"))
+#		out = out.decode("utf-8")
+#		a = [x.group() for x in re.finditer("vmess://(.*)",out)]
+#		return str(a)
+		
+	
+app.run(host=sys.argv[1], port=6969)
+
